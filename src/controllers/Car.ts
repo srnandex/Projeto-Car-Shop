@@ -6,6 +6,8 @@ export default class CarController {
   constructor(private _service: IService<ICar>) { }
 
   public async create(req: Request, res: Response<ICar>) {
+    console.log(req.body);
+    
     const results = await this._service.create(req.body);
     return res.status(201).json(results);
   }
@@ -27,6 +29,6 @@ export default class CarController {
 
   public async delete(req: Request, res: Response<ICar | null>) {
     const result = await this._service.delete(req.params.id);
-    return res.status(200).json(result);
+    return res.status(204).json(result);
   }
 }
